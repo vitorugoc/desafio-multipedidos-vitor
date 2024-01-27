@@ -10,5 +10,8 @@ class CarRepository implements CarRepositoryInterface
     {
         return Car::create($data);
     }
-
+    public function getAll()
+    {
+        return Car::all();
+    }
 }
