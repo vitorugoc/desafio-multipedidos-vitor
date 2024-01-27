@@ -20,6 +20,11 @@ class User extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function cars()
+    {
+        return $this->belongsToMany(Car::class);
+    }
+
     protected static function boot()
     {
         parent::boot();

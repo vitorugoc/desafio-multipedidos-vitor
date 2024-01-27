@@ -19,6 +19,11 @@ return new class extends Migration
         });
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function down(): void
     {
         Schema::dropIfExists('users');
