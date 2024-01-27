@@ -13,7 +13,7 @@ class CarService
         $this->carRepository = $carRepository;
     }
 
-    public function create(array $data)
+    public function createCar(array $data)
     {
         return $this->carRepository->create($data);
     }
