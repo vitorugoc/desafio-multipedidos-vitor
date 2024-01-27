@@ -17,4 +17,9 @@ class CarService
     {
         return $this->carRepository->create($data);
     }
+    
+    public function getAllCars()
+    {
+        return $this->carRepository->getAll();
+    }
 }
