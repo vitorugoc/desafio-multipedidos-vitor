@@ -3,6 +3,7 @@
 namespace App\Repositories\Car;
 
 use App\Models\Car;
+use App\Exceptions\EntityNotFoundException;
 
 class CarRepository implements CarRepositoryInterface
 {
@@ -17,7 +18,13 @@ class CarRepository implements CarRepositoryInterface
 
     public function findById($id)
     {
-        return Car::findOrFail($id);
+        $car = Car::find($id);
+
+        if (!$car) {
+            throw new EntityNotFoundException('carro');
+        }
+
+        return $car;
     }
 
     public function update($id, $data)

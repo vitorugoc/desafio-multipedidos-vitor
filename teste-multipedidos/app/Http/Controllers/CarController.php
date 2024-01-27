@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Car\CreateCarRequest;
 use App\Http\Requests\Car\UpdateCarRequest;
+use App\Exceptions\EntityNotFoundException;
 
 use App\Services\CarService;
 
@@ -47,6 +48,8 @@ class CarController extends Controller
             $this->carService->updateCar($id, $carData);
 
             return response()->json(['message' => 'Carro atualizado com sucesso.'], 200);
+        } catch (EntityNotFoundException $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
@@ -58,6 +61,8 @@ class CarController extends Controller
             $this->carService->deleteCar($id);
 
             return response()->json(['message' => 'Carro deletado com sucesso.'], 200);
+        } catch (EntityNotFoundException $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 500);
         }
