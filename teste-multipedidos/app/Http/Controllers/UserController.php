@@ -41,5 +41,16 @@ class UserController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function deleteUser($id)
+    {
+        try {
+            $this->userService->deleteUser($id);
+
+            return response()->json(['message' => 'Usuário deletado com sucesso.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
 }
 
