@@ -51,4 +51,15 @@ class CarController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function deleteCar($id)
+    {
+        try {
+            $this->carService->deleteCar($id);
+
+            return response()->json(['message' => 'Carro deletado com sucesso.'], 200);
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage(), 500);
+        }
+    }
 }
