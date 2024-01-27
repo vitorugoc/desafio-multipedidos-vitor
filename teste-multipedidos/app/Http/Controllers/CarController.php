@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Car\CreateCarRequest;
+use App\Http\Requests\Car\UpdateCarRequest;
+
 use App\Services\CarService;
 
 class CarController extends Controller
@@ -33,6 +35,18 @@ class CarController extends Controller
             $cars = $this->carService->getAllCars();
 
             return response()->json(['cars' => $cars], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
+    public function updateCar($id, UpdateCarRequest $request)
+    {
+        try {
+            $carData = $request->validated();
+
+            $this->carService->updateCar($id, $carData);
+
+            return response()->json(['message' => 'Carro atualizado com sucesso.'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
