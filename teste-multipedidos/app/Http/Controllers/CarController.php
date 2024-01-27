@@ -26,4 +26,15 @@ class CarController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function getAllCars()
+    {
+        try {
+            $cars = $this->carService->getAllCars();
+
+            return response()->json(['cars' => $cars], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
 }
