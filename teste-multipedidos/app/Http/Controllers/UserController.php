@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\CreateUserRequest;
 use App\Services\UserService;
-use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
+
 
 class UserController extends Controller
 {
@@ -29,12 +29,12 @@ class UserController extends Controller
         }
     }
 
-    public function updateUser(UpdateUserRequest $request, $id, UserServiceInterface $userService)
+    public function updateUser(UpdateUserRequest $request, $id)
     {
         try {
             $userData = $request->validated();
 
-            $user = $userService->updateUser($id, $userData);
+            $user = $this->userService->updateUser($id, $userData);
 
             return response()->json(['user' => $user], 200);
         } catch (\Exception $e) {
