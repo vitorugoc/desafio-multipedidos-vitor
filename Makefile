@@ -15,6 +15,6 @@ data:
 	docker exec teste-multipedidos bash -c "php artisan migrate"
 	docker exec teste-multipedidos bash -c "php artisan db:seed"
 permission:
-	docker exec teste-multipedidos bash -c "chmod -R 777 storage/ && chmod -R guo+w storage && chmod -R gu+w storage"
+	docker exec teste-multipedidos bash -c "chmod -R 777 storage/ && chmod -R guo+w storage && chmod -R gu+w storage && chgrp -R www-data storage bootstrap/cache && chmod -R ug+rwx storage bootstrap/cache"
 generate-key:
 	docker exec teste-multipedidos bash -c "php artisan key:generate"
