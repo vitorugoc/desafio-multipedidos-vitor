@@ -19,4 +19,5 @@ Route::group(['prefix' => 'users'], function () {
 Route::group(['prefix' => 'cars'], function () {
     Route::post('/', [CarController::class,'createCar']);
     Route::get('/', [CarController::class, 'getAllCars']);
+    Route::put('/{id}', [CarController::class, 'updateCar']);
 });
