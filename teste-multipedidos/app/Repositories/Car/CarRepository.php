@@ -14,7 +14,7 @@ class CarRepository implements CarRepositoryInterface
     {
         return Car::all();
     }
-    
+
     public function findById($id)
     {
         return Car::findOrFail($id);
@@ -26,5 +26,13 @@ class CarRepository implements CarRepositoryInterface
         $car->update($data);
 
         return $car;
+    }
+
+    public function delete($id)
+    {
+        $car = $this->findById($id);
+        $car->users()->detach();
+
+        return $car->delete();
     }
 }
