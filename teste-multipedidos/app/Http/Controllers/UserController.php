@@ -24,8 +24,6 @@ class UserController extends Controller
             $user = $this->userService->createUser($userData);
 
             return response()->json(['user' => $user], 201);
-        } catch (QueryException $e) {
-            return response()->json(['error' => 'Erro ao criar o usuário.'], 500);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
