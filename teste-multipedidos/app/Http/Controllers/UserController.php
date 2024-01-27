@@ -28,5 +28,18 @@ class UserController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function updateUser(UpdateUserRequest $request, $id, UserServiceInterface $userService)
+    {
+        try {
+            $userData = $request->validated();
+
+            $user = $userService->updateUser($id, $userData);
+
+            return response()->json(['user' => $user], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
 }
 
