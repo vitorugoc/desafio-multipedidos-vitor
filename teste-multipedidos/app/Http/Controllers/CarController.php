@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCarRequest;
+use App\Http\Requests\Car\CreateCarRequest;
 use App\Services\CarService;
 
 class CarController extends Controller
