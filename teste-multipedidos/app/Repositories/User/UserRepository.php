@@ -23,4 +23,8 @@ class UserRepository implements UserRepositoryInterface
 
         return $user;
     }
+
+    public function delete($id){
+        return User::destroy($id);
+    }
 }
