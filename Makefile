@@ -2,7 +2,6 @@ setup:
 	@make build
 	@make up
 	@make composer-update
-	@make generate-key
 	@make permission
 build:
 	docker-compose build --no-cache --force-rm
