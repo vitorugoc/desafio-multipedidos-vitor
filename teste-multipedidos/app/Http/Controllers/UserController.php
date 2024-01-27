@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
-use App\Services\UserService;
+use App\Services\User\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
