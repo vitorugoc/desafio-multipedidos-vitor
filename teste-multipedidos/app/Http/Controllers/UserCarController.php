@@ -40,4 +40,17 @@ class UserCarController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function getUserCars($userId)
+    {
+        try {
+            $cars = $this->userCarService->getUserCars($userId);
+
+            return response()->json(['cars' => $cars], 200);
+        } catch (EntityNotFoundException $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
 }
