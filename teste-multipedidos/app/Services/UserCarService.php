@@ -35,4 +35,11 @@ class UserCarService
 
         $user->cars()->detach($car);
     }
+
+    public function getUserCars($userId)
+    {
+        $user = $this->userRepository->findById($userId);
+
+        return $user->cars()->paginate();
+    }
 }
