@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este é um projeto PHP/Laravel, empacotado em contêineres Docker e gerenciado pelo Docker Compose. Inclui também testes automatizados que podem ser executados usando `make test`.
+Este é um projeto PHP/Laravel, empacotado em contêineres Docker e gerenciado pelo Docker Compose. Inclui também testes automatizados que podem ser executados usando `make test` e uma Collection com todos os endpoints documentados.
 
 ## Pré-requisitos
 
@@ -52,6 +52,11 @@ O PHPAdmin estará disponível em [http://localhost:9001](http://localhost:9001)
 ```bash
 make stop
 ```
+
+## Endpoints
+
+O projeto conta com uma Collection do Postman na qual estão documentados todos os endpoints disponíveis:
+[Collection](https://drive.google.com/file/d/1A0rxc3gIvMx0VkjBEjgfCSzh1baVE9J5/view)
 
 ## Testes
 
