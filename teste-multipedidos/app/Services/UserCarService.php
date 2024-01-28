@@ -23,4 +23,12 @@ class UserCarService
 
         $user->cars()->attach($car);
     }
+
+    public function disassociateUserFromCar($userId, $carId)
+    {
+        $user = $this->userRepository->findById($userId);
+        $car = $this->carRepository->findById($carId);
+
+        $user->cars()->detach($car);
+    }
 }
