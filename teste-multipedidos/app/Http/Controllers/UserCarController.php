@@ -27,4 +27,15 @@ class UserCarController extends Controller
             return response()->json(['error' => 'Erro interno do servidor.'], 500);
         }
     }
+
+    public function disassociateUserFromCar($userId, $carId)
+    {
+        try {
+            $this->userCarService->disassociateUserFromCar($userId, $carId);
+
+            return response()->json(['message' => 'Usuário desassociado do carro com sucesso.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor.'], 500);
+        }
+    }
 }
