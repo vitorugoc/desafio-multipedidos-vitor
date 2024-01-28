@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Car\CarRepositoryInterface;
 
