@@ -16,6 +16,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('/{id}', [UserController::class, 'updateUser']);
     Route::delete('/{id}', [UserController::class,'deleteUser']);
     Route::post('/{userId}/cars/{carId}/associate', [UserCarController::class, 'associateUserToCar']);
+    Route::delete('/{userId}/cars/{carId}/disassociate', [UserCarController::class, 'disassociateUserFromCar']);
 });
 
 Route::group(['prefix' => 'cars'], function () {
