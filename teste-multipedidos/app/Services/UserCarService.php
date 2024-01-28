@@ -16,18 +16,22 @@ class UserCarService
         $this->carRepository = $carRepository;
     }
 
-    public function associateUserToCar($userId, $carId)
+    private function getUserAndCar($userId, $carId, &$user, &$car)
     {
         $user = $this->userRepository->findById($userId);
         $car = $this->carRepository->findById($carId);
+    }
+
+    public function associateUserToCar($userId, $carId)
+    {
+        $this->getUserAndCar($userId, $carId, $user, $car);
 
         $user->cars()->attach($car);
     }
 
     public function disassociateUserFromCar($userId, $carId)
     {
-        $user = $this->userRepository->findById($userId);
-        $car = $this->carRepository->findById($carId);
+        $this->getUserAndCar($userId, $carId, $user, $car);
 
         $user->cars()->detach($car);
     }
