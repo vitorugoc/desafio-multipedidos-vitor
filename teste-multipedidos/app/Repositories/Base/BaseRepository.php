@@ -45,6 +45,11 @@ abstract class BaseRepository
         return $entity->delete();
     }
 
+    public function getAll()
+    {
+        return $this->model->all();
+    }
+
     abstract protected function getEntityName();
 
     abstract protected function handleDeleteRelations($entity);
