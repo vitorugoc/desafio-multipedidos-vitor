@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Base;
 
 use App\Exceptions\EntityNotFoundException;
 
