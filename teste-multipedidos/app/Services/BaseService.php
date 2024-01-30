@@ -37,4 +37,19 @@ abstract class BaseService
     {
         return $this->repository->getAll();
     }
+
+    public function associateEntityToCar($entity, $car)
+    {
+        $entity->cars()->attach($car);
+    }
+
+    public function dissociateEntityFromCar($entity, $car)
+    {
+        $entity->cars()->detach($car);
+    }
+
+    public function getEntityCarsPaginated($entity)
+    {
+        return $entity->cars()->paginate();
+    }
 }
