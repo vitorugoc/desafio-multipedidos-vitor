@@ -32,4 +32,9 @@ abstract class BaseService
     {
         return $this->repository->delete($id);
     }
+
+    public function getAll()
+    {
+        return $this->repository->getAll();
+    }
 }
