@@ -6,5 +6,4 @@ use App\Repositories\Base\BaseRepositoryInterface;
 
 interface CarRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getAll();
 }
