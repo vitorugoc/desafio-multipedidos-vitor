@@ -31,4 +31,9 @@ class CarController extends BaseApiController
     {
         return $this->handleDelete($id, [$this->carService, 'deleteCar'], "Carro");
     }
+
+    public function getAllCars()
+    {
+        return $this->handleGetAll([$this->carService, 'getAllCars']);
+    }
 }

@@ -6,7 +6,7 @@ use App\Exceptions\EntityNotFoundException;
 
 class BaseApiController extends Controller
 {
-    protected function jsonResponse(array $data, int $statusCode = 200)
+    protected function jsonResponse($data, int $statusCode = 200)
     {
         return response()->json($data, $statusCode);
     }
@@ -47,9 +47,18 @@ class BaseApiController extends Controller
     {
         try {
             call_user_func($serviceMethod, $id);
-            return $this->jsonResponse(['message' => "'$entity' deletado com sucesso."], 200);
+            return $this->jsonResponse(['message' => "$entity deletado com sucesso."], 200);
         } catch (EntityNotFoundException $e) {
             return $this->handleEntityNotFoundException($e);
+        } catch (\Exception $e) {
+            return $this->handleException($e);
+        }
+    }
+    protected function handleGetAll(callable $serviceMethod)
+    {
+        try {
+            $result = call_user_func($serviceMethod);
+            return $this->jsonResponse($result, 200);
         } catch (\Exception $e) {
             return $this->handleException($e);
         }
